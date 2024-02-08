@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import QrScanner from 'react-qr-scanner';
 import { Link } from 'react-router-dom';
+import GescannteProdukteList from '../gescannteproduktelist/GescannteProdukteList';
 
 const Kamera = () => {
   const [result, setResult] = useState('');
@@ -27,11 +28,15 @@ const Kamera = () => {
         onScan={handleScan}
         style={{ width: '100%' }}
       />
-      {result && <p>Gescannter QR Code: {result}</p>}
+      {result && (
+        <>
+          <p>Gescannter QR Code: {result.text}</p>
+          <GescannteProdukteList gescannteProdukte={[{ id: 1, name: 'Produkt', preis: 10 }]} />
+        </>
+      )}
       <Link to="/gescannteproduktelist" className="btn btn-primary mt-3">
         Zur Liste
       </Link>
-    
     </div>
   );
 };

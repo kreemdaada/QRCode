@@ -30,16 +30,16 @@ const GescannteProdukteList = ({ gescannteProdukte, onDelete, onEdit, onAdd, onS
       };
   return (
     
-    <><div className="mt-4">
-          <h2 className="mb-3">Gescannte Produkte</h2>
-          <ul className="list-group">
-              {gescannteProdukte.map((produkt) => (
-                  <li key={produkt.id} className="list-group-item d-flex justify-content-between align-items-center">
-                      <div>
-                          {editProductId === produkt.id ? (
-                              <div className="input-group">
-                                  <input
-                                      type="text"
+    <>   
+         <div className="mt-4">
+            <h2 className="mb-3">Gescannte Produkte</h2>
+            <ul className="list-group">
+            {gescannteProdukte.map((produkt) => (
+                <li key={produkt.id} className="list-group-item d-flex justify-content-between align-items-center">
+                <div>
+                    {editProductId === produkt.id ? (
+                    <div className="input-group">                            <input
+                                            type="text"
                                       className="form-control me-2"
                                       placeholder="Produktname"
                                       value={editedProduct.name}
