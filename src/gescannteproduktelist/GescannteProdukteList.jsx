@@ -78,9 +78,6 @@ const GescannteProdukteList = ({ gescannteProdukte, onDelete, onEdit, onAdd, onS
                                   <button onClick={() => onAdd(produkt.id)} className="btn btn-success me-2">
                                       Hinzufügen
                                   </button>
-                                  <button onClick={() => onSubtract(produkt.id)} className="btn btn-warning">
-                                      Subtrahieren
-                                  </button>
                               </>
                           )}
                       </div>
@@ -98,9 +95,6 @@ const GescannteProdukteList = ({ gescannteProdukte, onDelete, onEdit, onAdd, onS
               <button className="btn btn-success me-2" onClick={() => onAdd(1)}>
                   Hinzufügen
               </button>
-              <button className="btn btn-warning" onClick={() => onSubtract(1)}>
-                  Subtrahieren
-              </button>
           </li>
           <li className="list-group-item d-flex justify-content-between align-items-center">
               Produkt 2 - 15 €
@@ -112,9 +106,6 @@ const GescannteProdukteList = ({ gescannteProdukte, onDelete, onEdit, onAdd, onS
               </button>
               <button className="btn btn-success me-2" onClick={() => onAdd(2)}>
                   Hinzufügen
-              </button>
-              <button className="btn btn-warning" onClick={() => onSubtract(2)}>
-                  Subtrahieren
               </button>
           </li>
 
