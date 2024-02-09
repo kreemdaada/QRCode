@@ -114,6 +114,9 @@ const GescannteProdukteList = ({ gescannteProdukte, onDelete, onEdit, onAdd, onS
               <Link to="/zahlen" className="btn btn-primary mt-3">
                   Zur Zahlung
               </Link>
+              <Link to="/kamera" className="btn btn-primary mt-3">
+                  Zur Scannen
+              </Link>
           </div></>
   );
 };
