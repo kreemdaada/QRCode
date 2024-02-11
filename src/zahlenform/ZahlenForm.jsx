@@ -91,7 +91,7 @@ const ZahlungsForm = () => {
       </Link>
       </form>
       <Link to="/gescannteproduktelist" className="btn btn-primary">
-        Bearbeiten
+        Zurück zu Liste
       </Link>
     </div>
   );
