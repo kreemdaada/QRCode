@@ -1,0 +1,26 @@
+Projektname: QR-Code-Scanner und Zahlungs-App
+
+Beschreibung:
+Dieses Projekt ermöglicht es Benutzern, Produkte mit einer QR-Code-App zu scannen und je nach Standort (Lidl oder Aldi) zu bezahlen.
+
+Schritte zur Implementierung:
+
+1. QR-Code-Scannen:
+   - Verwende die `react-qr-reader`-Bibliothek für die Implementierung des QR-Code-Scanners.
+
+2. Produktidentifikation:
+   - Baue eine Verknüpfung zwischen dem gescannten QR-Code und einem Produktkatalog auf.
+
+3. Bestimmung des Standorts (Lidl oder Aldi):
+   - Implementiere eine Logik zur Bestimmung des Standorts basierend auf dem gescannten Produkt.
+
+4. Bezahlvorgang:
+   - Leite den Benutzer zu einem Bezahlsystem weiter, das auf dem Produkt und dem Standort basiert.
+
+5. Integration mit Lidl oder Aldi API:
+   - Falls verfügbar, integriere öffentliche APIs von Lidl oder Aldi für Produktinformationen, Standorte und Zahlungsdienste.
+
+6. Sicherheit und Datenschutz:
+   - Achte darauf, alle Sicherheitsstandards und Datenschutzrichtlinien einzuhalten, insbesondere bei Zahlungsinformationen.
+
+Abdulkareem Daada.
