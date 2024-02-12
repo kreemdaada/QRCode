@@ -1,41 +1,42 @@
 import React, { useState, useEffect } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 const BearbeitZahlen = () => {
   const [redirect, setRedirect] = useState(false);
+  const navigate = useNavigate();
 
   const handleAbbrechen = () => {
-    // Implement logic to handle cancellation
     console.log('Cancellation logic here');
+    navigate('/ZahlenForm');
   };
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       setRedirect(true);
-    }, 6000);
+    },8000); 
 
-    // Cleanup function to clear the timeout when the component unmounts
     return () => clearTimeout(timeoutId);
-  }, []); // Empty dependency array to run this effect only once when the component mounts
+  }, []); 
 
-  // Redirect after 6 seconds
-  if (redirect) {
-    setTimeout(() => {
-      window.location.href = '/bezahlen-erfolgreich';
-    }, 0); // Use a timeout of 0 to allow the previous state and route change to complete
-  }
-
+  useEffect(() => {
+    if (redirect) {
+      setTimeout(() => {
+        navigate('/bezahlen-erfolgreich');
+      }, 4000); // Nach weiteren 5 Sekunden zur Erfolgsseite navigieren
+    }
+  }, [redirect, navigate]);
   return (
-    <div>
-      <h2>Bearbeite Zahlen</h2>
-      <img src="/images/process.png" alt="Prozess" />
-      <p>Additional content...</p>
+    <div className='d-flex flex-column align-items-center justify-content-center vh-100'>
+      <div>
+        <h2 className="text-center">Bearbeite Zahlen</h2>
+        <img src="/images/process.png" alt="Prozess" className="mx-auto d-block" />
+        <p className="text-center">Additional content...</p>
+      </div>
 
       {/* Button to navigate back to the scanned product list */}
-      <button className="btn btn-primary" onClick={handleAbbrechen}>
+      <button style={{ margin: 'auto' }} className="btn btn-primary" onClick={handleAbbrechen}>
         Abbrechen
       </button>
     </div>
   );
 };
-
 export default BearbeitZahlen;

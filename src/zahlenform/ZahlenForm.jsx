@@ -1,7 +1,9 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-const ZahlungsForm = () => {
-  // State to manage form fields
+import React, { useState, useEffect } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+
+const ZahlenForm = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     fullName: '',
     address: '',
@@ -18,20 +20,34 @@ const ZahlungsForm = () => {
     }));
   };
 
-  // Handler for form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Implement logic for handling form submission, e.g., sending data to the server
-    console.log('Form submitted:', formData);
-  };
+    
+    const handleZahlen = () => {
+      setTimeout(() => {
+        console.log('Zahlen process completed after 5 seconds', formData);
+        // Navigate to '/bezahlen-erfolgreich' after 5 seconds
+        navigate('/bezahlen-erfolgreich');
+      }, 5000); // 5000 milliseconds = 5 seconds
+    };
+    
+    useEffect(() => {
+      console.log('ZahlenForm component has mounted.');
+
+         // Clean-up function (optional)
+      return () => {
+        console.log('ZahlenForm component will unmount.');
+        // Additional clean-up logic can be added here if needed.
+      };
+    }, [navigate]);
 
   return (
     <div className="container mt-5">
       <h2>Zahlungsformular</h2>
-      <form onSubmit={handleSubmit}>
+      <form>
         {/* Full Name */}
         <div className="mb-3">
-          <label htmlFor="fullName" className="form-label">Vollständiger Name</label>
+          <label htmlFor="fullName" className="form-label">
+            Vollständiger Name
+          </label>
           <input
             type="text"
             className="form-control"
@@ -45,7 +61,9 @@ const ZahlungsForm = () => {
 
         {/* Address */}
         <div className="mb-3">
-          <label htmlFor="address" className="form-label">Adresse</label>
+          <label htmlFor="address" className="form-label">
+            Adresse
+          </label>
           <input
             type="text"
             className="form-control"
@@ -59,7 +77,9 @@ const ZahlungsForm = () => {
 
         {/* Date of Birth */}
         <div className="mb-3">
-          <label htmlFor="dateOfBirth" className="form-label">Geburtsdatum</label>
+          <label htmlFor="dateOfBirth" className="form-label">
+            Geburtsdatum
+          </label>
           <input
             type="date"
             className="form-control"
@@ -73,7 +93,9 @@ const ZahlungsForm = () => {
 
         {/* IBAN */}
         <div className="mb-3">
-          <label htmlFor="iban" className="form-label">IBAN</label>
+          <label htmlFor="iban" className="form-label">
+            IBAN
+          </label>
           <input
             type="text"
             className="form-control"
@@ -86,15 +108,15 @@ const ZahlungsForm = () => {
         </div>
 
         {/* Submit button */}
-        <Link to="/bearbeiten" className="btn btn-primary">
-        Zahlen
-      </Link>
+        <Link to="/bearbeiten" type="button" className="btn btn-primary me-2"onClick={handleZahlen} >
+          Zahlen
+        </Link>
+        <Link to="/gescannteproduktelist" className="btn btn-primary">
+          Abbrechen
+        </Link>
       </form>
-      <Link to="/gescannteproduktelist" className="btn btn-primary">
-        Bearbeiten
-      </Link>
     </div>
   );
 };
 
-export default ZahlungsForm;
+export default ZahlenForm;

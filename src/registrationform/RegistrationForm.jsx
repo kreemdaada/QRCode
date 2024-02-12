@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';  // Import useNavigate
+import { useNavigate } from 'react-router-dom';
 
 const RegistrationForm = ({ onRegistration, onLogin }) => {
   const [formData, setFormData] = useState({
@@ -10,7 +10,8 @@ const RegistrationForm = ({ onRegistration, onLogin }) => {
     confirmPassword: '',
   });
 
-  // Use useNavigate instead of useHistory
+  const [isLogin, setIsLogin] = useState(false); 
+
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -23,31 +24,60 @@ const RegistrationForm = ({ onRegistration, onLogin }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Formulardaten:', formData);
 
-    onRegistration();
+    fetch('http://localhost/my-react-app/backend/database.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      mode: 'cors',
+      body: JSON.stringify({
+        ...formData,
+        isLogin, // Include isLogin flag in the request
+      }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log(data);
 
-    // Use navigate function to navigate to the welcome page
-    navigate('/welcome');
+        if (data.success) {
+          if (isLogin) {
+            // Handle login success
+            onLogin();
+            navigate('/welcome');
+          } else {
+            // Handle registration success
+            onRegistration();
+            navigate('/welcome');
+          }
+        } else {
+          alert(`Operation failed: ${data.error}`);
+        }
+      })
+      .catch((error) => {
+        console.error('Error in AJAX request:', error);
+      });
   };
 
-  const handleLogin = () => {
-    console.log('Benutzer anmelden');
-
-    const simulatedLoginSuccess = true;
-
-    if (simulatedLoginSuccess) {
-      onLogin();
-      navigate('/welcome');
-    } else {
-      alert('Anmeldung fehlgeschlagen. Überprüfen Sie Benutzername und Passwort.');
-    }
+  const toggleMode = () => {
+    setIsLogin((prevIsLogin) => !prevIsLogin);
+    setFormData({
+      firstName: '',
+      lastName: '',
+      email: '',
+      password: '',
+      confirmPassword: '',
+    });
   };
 
+  const handleAnmelden = () => {
+    toggleMode(); // Call toggleMode when needed
+    navigate('/welcome'); 
+  };
   return (
-    <div className="container mt-5">
+    <div className="container d-flex flex-column align-items-center mt-5">
       <div>
-        <h2>Registrierung</h2>
+      <h2>{isLogin ? 'Anmeldung' : 'Registrierung'}</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
             <label htmlFor="firstName" className="form-label">
@@ -120,16 +150,16 @@ const RegistrationForm = ({ onRegistration, onLogin }) => {
           </div>
 
           <button type="submit" className="btn btn-primary">
-            Registrieren
+          {isLogin ? 'Anmelden' : 'Registrieren'}
+            
           </button>
         </form>
       </div>
 
-      <div className="mt-4">
-        <h2>Anmeldung</h2>
-        <button onClick={handleLogin} className="btn btn-secondary">
-          Anmelden
-        </button>
+      <div className="mt-4 row justify-content-between">
+      <button onClick={handleAnmelden} className="btn btn-secondary">
+        {isLogin ? 'Registrieren' : 'Anmelden'}
+      </button>
       </div>
     </div>
   );

@@ -16,7 +16,7 @@ const Kamera = () => {
   };
 
   return (
-    <div>
+    <div className="kamera-container text-center">
       <Link to="/" className="btn btn-primary mt-3">
         Zurück zur Registrierung
       </Link>
