@@ -115,12 +115,10 @@ const ZahlenForm = () => {
           Abbrechen
         </Link>
       </form>
-<<<<<<< HEAD
-=======
       <Link to="/gescannteproduktelist" className="btn btn-primary">
         Zurück zu Liste
       </Link>
->>>>>>> 04c6c762d26c280eacd82c67c4af008beb901ee6
+
     </div>
   );
 };
