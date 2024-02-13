@@ -48,9 +48,6 @@ const Kamera = () => {
       <Link to="/gescannteproduktelist" className="btn btn-primary mt-3">
         Zur Liste
       </Link>
-
-      {/* Toast-Benachrichtigungskomponente */}
-      <ToastContainer />
     </div>
   );
 };
