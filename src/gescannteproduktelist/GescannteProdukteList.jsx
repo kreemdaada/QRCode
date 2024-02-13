@@ -1,7 +1,7 @@
-import React, {useEffect  ,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const GescannteProdukteList = ({ gescannteProdukte, onDelete, onEdit, onAdd, scannedData  }) => {
+const GescannteProdukteList = ({ gescannteProdukte, onDelete, onEdit, onAdd, scannedData }) => {
   const [editProductId, setEditProductId] = useState(null);
   const [editedProduct, setEditedProduct] = useState({ name: '', preis: 0 });
 
@@ -24,26 +24,24 @@ const GescannteProdukteList = ({ gescannteProdukte, onDelete, onEdit, onAdd, sca
 
   const berechneGesamtsumme = () => {
     const gesamtsumme = gescannteProdukte.reduce((sum, produkt) => sum + produkt.preis, 0);
-    return gesamtsumme.toFixed(2);
+    return gesamtsumme.toFixed(2); // Rundet die Gesamtsumme auf zwei Dezimalstellen
   };
 
-  
-  //Gescannte Daten 
+  // Gescannte Daten
   const gescannteDaten = {
     produktName: 'Produkt A',
-    preis: 10.99
+    preis: 10.99,
   };
 
-    // Api-Anfrage
-
-    const sendScannedDataToAPI = () => {
-      fetch('http://localhost/my-react-app/backend/api.php', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(gescannteDaten),
-      })
+  // Api-Anfrage
+  const sendScannedDataToAPI = () => {
+    fetch('http://localhost/my-react-app/backend/api.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(gescannteDaten),
+    })
       .then(response => response.json())
       .then(data => {
         console.log('Antwort von API:', data);
@@ -51,7 +49,8 @@ const GescannteProdukteList = ({ gescannteProdukte, onDelete, onEdit, onAdd, sca
       .catch((error) => {
         console.error('Fehler beim Senden an die API:', error);
       });
-    };
+  };
+
   useEffect(() => {
     if (scannedData) {
       sendScannedDataToAPI();
@@ -134,3 +133,4 @@ const GescannteProdukteList = ({ gescannteProdukte, onDelete, onEdit, onAdd, sca
 };
 
 export default GescannteProdukteList;
+

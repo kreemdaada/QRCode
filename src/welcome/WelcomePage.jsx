@@ -11,6 +11,7 @@ const WelcomePage = () => {
           alt="Welcome Image"
           className="img-fluid rounded mt-4" 
           style={{ maxWidth: '100%' }}
+
         />
         <p className="lead mt-3">
           Vielen Dank für die Registrierung. Wir freuen uns, Sie wieder begrüßen zu dürfen.
