@@ -23,7 +23,7 @@ Schritte zur Implementierung:
 6. Sicherheit und Datenschutz:
    - Achte darauf, alle Sicherheitsstandards und Datenschutzrichtlinien einzuhalten, insbesondere bei Zahlungsinformationen.
 #######################################################################################################################################
-einige Punkte  in deinem Projekt müssen berücksichtigen werden
+einige Punkte  im Projekt müssen berücksichtigen werden
 
 
 1.Benutzerfreundlichkeit:
