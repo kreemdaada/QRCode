@@ -17,8 +17,8 @@ const WelcomePage = () => {
           Vielen Dank für die Registrierung. Wir freuen uns, Sie wieder begrüßen zu dürfen.
         </p>
         <div className='d-flex justify-content-between'>
-        <Link to="/" className="btn btn-outline-primary">
-          Zurück zur Registrierung
+        <Link to="/welcome" className="btn btn-outline-primary">
+          Zurück zur Home
         </Link>
         <Link to="/kamera" className="btn btn-outline-primary">
            Zur Scannen

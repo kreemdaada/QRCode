@@ -21,13 +21,12 @@ const ZahlenForm = () => {
   };
 
     
-    const handleZahlen = () => {
-      setTimeout(() => {
-        console.log('Zahlen process completed after 5 seconds', formData);
-        // Navigate to '/bezahlen-erfolgreich' after 5 seconds
-        navigate('/bezahlen-erfolgreich');
-      }, 5000); // 5000 milliseconds = 5 seconds
-    };
+  const handleZahlen = () => {
+    setTimeout(() => {
+      console.log('Zahlen process completed after 5 seconds', formData);
+      navigate('/bezahlen-erfolgreich');
+    }, 5000);
+  };
     
     useEffect(() => {
       console.log('ZahlenForm component has mounted.');
