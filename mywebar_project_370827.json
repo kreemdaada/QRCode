@@ -1,0 +1,264 @@
+{
+  "objects": [
+    {
+      "id": -199962900,
+      "object_list_id": 1,
+      "transform_pos_x": -1.2,
+      "transform_pos_y": 1.04,
+      "transform_pos_z": 0.14,
+      "transform_rot_x": 4.71,
+      "transform_rot_y": 0,
+      "transform_rot_z": 0,
+      "transform_rot_w": 0,
+      "transform_scale": 1,
+      "scene_template_transform": "",
+      "vars": {
+        "url": "https://mywebar-a.akamaihd.net/137357/370827/taitopia_render_B6oBCNG7IK4_unsplash.jpg",
+        "Alpha_Transparency": "1"
+      },
+      "created_at": "2024-02-16T09:00:27.000000Z",
+      "updated_at": "2024-02-16T09:07:39.000000Z",
+      "transform_scale_x": 1,
+      "transform_scale_y": 1,
+      "transform_scale_z": 1,
+      "visible": true,
+      "object_list_version_id": 1,
+      "caption": "taitopia_render_B6oBCNG7IK4_unsplash.jpg",
+      "captionLong": "taitopia_render_B6oBCNG7IK4_unsplash.jpg\t(Bild)",
+      "behaviours": []
+    },
+    {
+      "id": -199964100,
+      "object_list_id": 1,
+      "transform_pos_x": -1.03,
+      "transform_pos_y": 1.07,
+      "transform_pos_z": 1.9,
+      "transform_rot_x": 4.71,
+      "transform_rot_y": 0,
+      "transform_rot_z": 0,
+      "transform_rot_w": 0,
+      "transform_scale": 1,
+      "scene_template_transform": "",
+      "vars": {
+        "url": "https://mywebar-a.akamaihd.net/137357/370827/daniel_korpai_hbTKIbuMmBI_unsplash.jpg",
+        "Alpha_Transparency": "1"
+      },
+      "created_at": "2024-02-16T09:06:14.000000Z",
+      "updated_at": "2024-02-16T09:07:39.000000Z",
+      "transform_scale_x": 1,
+      "transform_scale_y": 1,
+      "transform_scale_z": 1,
+      "visible": true,
+      "object_list_version_id": 1,
+      "caption": "daniel_korpai_hbTKIbuMmBI_unsplash.jpg",
+      "captionLong": "daniel_korpai_hbTKIbuMmBI_unsplash.jpg\t(Bild)",
+      "behaviours": [
+        {
+          "id": 1426652,
+          "behaviour_list_id": 1,
+          "page_object_id": -199964100,
+          "source_page_object_id": -199964100,
+          "vars": {
+            "url": "http://localhost:3000/gescannteproduktelist",
+            "target": "_blank"
+          },
+          "created_at": "2024-02-16T09:06:14.000000Z",
+          "updated_at": "2024-02-16T09:16:50.000000Z"
+        }
+      ]
+    },
+    {
+      "id": -199964200,
+      "object_list_id": 1,
+      "transform_pos_x": 0,
+      "transform_pos_y": 1.09,
+      "transform_pos_z": -0.94,
+      "transform_rot_x": 4.71,
+      "transform_rot_y": 0,
+      "transform_rot_z": 0,
+      "transform_rot_w": 0,
+      "transform_scale": 1,
+      "scene_template_transform": "",
+      "vars": {
+        "url": "https://mywebar-a.akamaihd.net/137357/370827/giorgio_trovato_K62u25Jk6vo_unsplash.jpg",
+        "Alpha_Transparency": "1"
+      },
+      "created_at": "2024-02-16T09:06:14.000000Z",
+      "updated_at": "2024-02-16T09:09:22.000000Z",
+      "transform_scale_x": 1.3,
+      "transform_scale_y": 1,
+      "transform_scale_z": 1,
+      "visible": true,
+      "object_list_version_id": 1,
+      "caption": "giorgio_trovato_K62u25Jk6vo_unsplash.jpg",
+      "captionLong": "giorgio_trovato_K62u25Jk6vo_unsplash.jpg\t(Bild)",
+      "behaviours": [
+        {
+          "id": 1426653,
+          "behaviour_list_id": 12,
+          "page_object_id": -199964200,
+          "source_page_object_id": -199964200,
+          "vars": {
+            "Move_end_position": "12;30;55",
+            "Move_speed": 1,
+            "Delay": "0"
+          },
+          "created_at": "2024-02-16T09:06:14.000000Z",
+          "updated_at": "2024-02-16T09:09:22.000000Z"
+        },
+        {
+          "id": 1426669,
+          "behaviour_list_id": 9,
+          "page_object_id": -199964200,
+          "source_page_object_id": -199964200,
+          "vars": {
+            "Rotate_by_default": "1",
+            "Rotation_speed_in_degrees_per_second": 5
+          },
+          "created_at": "2024-02-16T09:09:22.000000Z",
+          "updated_at": "2024-02-16T09:09:22.000000Z"
+        }
+      ]
+    },
+    {
+      "id": -199964300,
+      "object_list_id": 1,
+      "transform_pos_x": 1.21,
+      "transform_pos_y": 1.17,
+      "transform_pos_z": -0.13,
+      "transform_rot_x": 4.71,
+      "transform_rot_y": 0,
+      "transform_rot_z": 0,
+      "transform_rot_w": 0,
+      "transform_scale": 1,
+      "scene_template_transform": "",
+      "vars": {
+        "url": "https://mywebar-a.akamaihd.net/137357/370827/rachit_tank_2cFZ_FB08UM_unsplash.jpg",
+        "Alpha_Transparency": "1"
+      },
+      "created_at": "2024-02-16T09:06:14.000000Z",
+      "updated_at": "2024-02-16T09:16:50.000000Z",
+      "transform_scale_x": 1,
+      "transform_scale_y": 1,
+      "transform_scale_z": 1,
+      "visible": true,
+      "object_list_version_id": 1,
+      "caption": "rachit_tank_2cFZ_FB08UM_unsplash.jpg",
+      "captionLong": "rachit_tank_2cFZ_FB08UM_unsplash.jpg\t(Bild)",
+      "behaviours": []
+    },
+    {
+      "id": -199964400,
+      "object_list_id": 1,
+      "transform_pos_x": 1.04,
+      "transform_pos_y": 1.07,
+      "transform_pos_z": 1.43,
+      "transform_rot_x": 4.71,
+      "transform_rot_y": 0,
+      "transform_rot_z": 0,
+      "transform_rot_w": 0,
+      "transform_scale": 1,
+      "scene_template_transform": "",
+      "vars": {
+        "url": "https://mywebar-a.akamaihd.net/137357/370827/ruslan_bardash_4kTbAMRAHtQ_unsplash.jpg",
+        "Alpha_Transparency": "1"
+      },
+      "created_at": "2024-02-16T09:06:14.000000Z",
+      "updated_at": "2024-02-16T09:07:39.000000Z",
+      "transform_scale_x": 1,
+      "transform_scale_y": 1,
+      "transform_scale_z": 1,
+      "visible": true,
+      "object_list_version_id": 1,
+      "caption": "ruslan_bardash_4kTbAMRAHtQ_unsplash.jpg",
+      "captionLong": "ruslan_bardash_4kTbAMRAHtQ_unsplash.jpg\t(Bild)",
+      "behaviours": [
+        {
+          "id": 1426654,
+          "behaviour_list_id": 5,
+          "page_object_id": -199964400,
+          "source_page_object_id": -199964400,
+          "vars": {
+            "Rotate_by_default": "1",
+            "Rotation_speed_in_degrees_per_second": 5
+          },
+          "created_at": "2024-02-16T09:06:14.000000Z",
+          "updated_at": "2024-02-16T09:06:14.000000Z"
+        }
+      ]
+    },
+    {
+      "id": -199967900,
+      "object_list_id": 14,
+      "transform_pos_x": -2.02,
+      "transform_pos_y": 0.95,
+      "transform_pos_z": 0.75,
+      "transform_rot_x": 0,
+      "transform_rot_y": 0,
+      "transform_rot_z": 0,
+      "transform_rot_w": 0,
+      "transform_scale": 1,
+      "scene_template_transform": "",
+      "vars": {
+        "url": "https://mywebar-a.akamaihd.net/examples2022/Fonts/Latin/Arial_Bold.json?hash=b887dc97c1ebab3b07797b511554cf0e",
+        "text": "Preis : 200€",
+        "color": "0xffead1",
+        "size": 30,
+        "height": 1,
+        "curve_segments": "20",
+        "bevel_enabled": 0,
+        "bevel_thickness": "0.1",
+        "bevel_size": "0.01",
+        "bevel_offset": "0",
+        "bevel_segments": "8"
+      },
+      "created_at": "2024-02-16T09:16:50.000000Z",
+      "updated_at": "2024-02-16T09:16:50.000000Z",
+      "transform_scale_x": 1,
+      "transform_scale_y": 1,
+      "transform_scale_z": 1,
+      "visible": true,
+      "object_list_version_id": 11,
+      "caption": "Arial_Bold.json",
+      "captionLong": "Arial_Bold.json\t(Text)",
+      "behaviours": []
+    },
+    {
+      "id": -199968000,
+      "object_list_id": 14,
+      "transform_pos_x": -1.47,
+      "transform_pos_y": 1,
+      "transform_pos_z": 2.49,
+      "transform_rot_x": 0,
+      "transform_rot_y": 0,
+      "transform_rot_z": 0,
+      "transform_rot_w": 0,
+      "transform_scale": 1,
+      "scene_template_transform": "",
+      "vars": {
+        "url": "https://mywebar-a.akamaihd.net/examples2022/Fonts/Latin/Arial_Bold.json?hash=b887dc97c1ebab3b07797b511554cf0e",
+        "text": "Preis: 150€",
+        "color": "0xffead1",
+        "size": 30,
+        "height": 1,
+        "curve_segments": "20",
+        "bevel_enabled": 0,
+        "bevel_thickness": "0.1",
+        "bevel_size": "0.01",
+        "bevel_offset": "0",
+        "bevel_segments": "8"
+      },
+      "created_at": "2024-02-16T09:16:50.000000Z",
+      "updated_at": "2024-02-16T09:16:50.000000Z",
+      "transform_scale_x": 1,
+      "transform_scale_y": 1,
+      "transform_scale_z": 1,
+      "visible": true,
+      "object_list_version_id": 11,
+      "caption": "Arial_Bold.json",
+      "captionLong": "Arial_Bold.json\t(Text)",
+      "behaviours": []
+    }
+  ],
+  "isMywebarProject": true
+}
