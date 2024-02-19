@@ -8,11 +8,27 @@ const BezahlenErfolgreich = () => {
     // Hier implementierst du die Logik für eine erfolgreiche Zahlung und erhältst die Bestellnummer
     const bestellnummer = generateBestellnummer();
     setBestellnummer(bestellnummer);
+
+    // Beispiel: Bestellnummer an Server senden
+    sendBestellnummerToServer(bestellnummer);
   }, []); // Achten Sie darauf, dass diese Effekt-Funktion nur einmal nach dem Rendern aufgerufen wird
 
   const generateBestellnummer = () => {
     // Beispiel: Zufällige Bestellnummer
     return Math.floor(Math.random() * 1000000).toString();
+  };
+
+  const sendBestellnummerToServer = (bestellnummer) => {
+    fetch('http://localhost/my-react-app/backend/speichereBestellnummer.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ bestellnummer }),
+    })
+      .then(response => response.json())
+      .then(data => console.log(data))
+      .catch(error => console.error('Error:', error));
   };
 
   return (

@@ -10,7 +10,7 @@ const RegistrationForm = ({ onRegistration, onLogin }) => {
     confirmPassword: '',
   });
 
-  const [isLogin, setIsLogin] = useState(false); 
+  const [isLogin, setIsLogin] = useState(false);
 
   const navigate = useNavigate();
 
@@ -22,9 +22,7 @@ const RegistrationForm = ({ onRegistration, onLogin }) => {
     }));
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
+  const handleAuthentication = () => {
     fetch('http://localhost/my-react-app/backend/database.php', {
       method: 'POST',
       headers: {
@@ -59,6 +57,11 @@ const RegistrationForm = ({ onRegistration, onLogin }) => {
       });
   };
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    handleAuthentication();
+  };
+
   const toggleMode = () => {
     setIsLogin((prevIsLogin) => !prevIsLogin);
     setFormData({
@@ -72,8 +75,9 @@ const RegistrationForm = ({ onRegistration, onLogin }) => {
 
   const handleAnmelden = () => {
     toggleMode(); // Call toggleMode when needed
-    navigate('/welcome'); 
+    navigate('/welcome');
   };
+
   return (
     <div className="container d-flex flex-column align-items-center mt-5">
       <div>

@@ -47,31 +47,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
             // Überprüfen, ob Passwort und Bestätigung übereinstimmen
             if ($password === $confirmPassword) {
-                // Passwort-Hashing
-                $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
+                // Passwort-Validierung (Mindestlänge, besondere Anforderungen, etc.)
+                if (strlen($password) >= 8) {
+                    // Passwort-Hashing
+                    $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
 
-                // Verwende ein vorbereitetes Statement, um SQL-Injektionen zu verhindern
-                $sql = "INSERT INTO users (vorname, nachname, email, password) VALUES (?, ?, ?, ?)";
-                $stmt = $conn->prepare($sql);
+                    // Verwende ein vorbereitetes Statement, um SQL-Injektionen zu verhindern
+                    $sql = "INSERT INTO users (vorname, nachname, email, password) VALUES (?, ?, ?, ?)";
+                    $stmt = $conn->prepare($sql);
 
-                // Binden der Parameter
-                $stmt->bind_param("ssss", $firstName, $lastName, $email, $hashedPassword);
+                    // Binden der Parameter
+                    $stmt->bind_param("ssss", $firstName, $lastName, $email, $hashedPassword);
 
-                // Ausführen des Statements
-                if ($stmt->execute()) {
-                    echo json_encode(['success' => true, 'message' => 'Registration successful']);
+                    // Ausführen des Statements
+                    if ($stmt->execute()) {
+                        echo json_encode(['success' => true, 'message' => 'Registration successful']);
+                    } else {
+                        $errorDetails = $stmt->error;
+                        $errorCode = $stmt->errno;
+
+                        // Fehlerprotokollierung
+                        error_log("Error executing query: " . $errorDetails);
+
+                        echo json_encode(['success' => false, 'error' => 'Error executing query']);
+                    }
+
+                    // Statement schließen
+                    $stmt->close();
                 } else {
-                    $errorDetails = $stmt->error;
-                    $errorCode = $stmt->errno;
-
-                    // Fehlerprotokollierung
-                    error_log("Error executing query: " . $errorDetails);
-
-                    echo json_encode(['success' => false, 'error' => 'Error executing query', 'errorCode' => $errorCode]);
+                    echo json_encode(['success' => false, 'error' => 'Password must be at least 8 characters']);
                 }
-
-                // Statement schließen
-                $stmt->close();
             } else {
                 echo json_encode(['success' => false, 'error' => 'Password and confirmation do not match']);
             }
