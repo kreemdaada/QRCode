@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const GescannteProdukteList = ({ gescannteProdukte, onDelete, onEdit, onAdd, scannedData }) => {
   const [editProductId, setEditProductId] = useState(null);
-  const [editedProduct, setEditedProduct] = useState({ name: '', preis: 0 });
+  const [editedProduct, setEditedProduct] = useState({ name: '', preis: 0, menge : 0 });
 
   const handleEditStart = (produktId) => {
     const produktToEdit = gescannteProdukte.find((produkt) => produkt.id === produktId);
@@ -13,17 +13,17 @@ const GescannteProdukteList = ({ gescannteProdukte, onDelete, onEdit, onAdd, sca
 
   const handleEditCancel = () => {
     setEditProductId(null);
-    setEditedProduct({ name: '', preis: 0 });
+    setEditedProduct({ name: '', preis: 0,menge:0 });
   };
 
   const handleEditSave = () => {
     onEdit(editProductId, editedProduct);
     setEditProductId(null);
-    setEditedProduct({ name: '', preis: 0 });
+    setEditedProduct({ name: '', preis: 0,menge:0 });
   };
 
   const berechneGesamtsumme = () => {
-    const gesamtsumme = gescannteProdukte.reduce((sum, produkt) => sum + produkt.preis, 0);
+    const gesamtsumme = gescannteProdukte.reduce((sum, produkt) => sum + (produkt.preis * produkt.menge), 0);
     return gesamtsumme.toFixed(2); // Rundet die Gesamtsumme auf zwei Dezimalstellen
   };
 
@@ -35,7 +35,7 @@ const GescannteProdukteList = ({ gescannteProdukte, onDelete, onEdit, onAdd, sca
 
   // Api-Anfrage
   const sendScannedDataToAPI = () => {
-    fetch('http://localhost/my-react-app/backend/api.php', {
+    fetch('http://localhost/Qrcode/backend/api.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -86,6 +86,13 @@ const GescannteProdukteList = ({ gescannteProdukte, onDelete, onEdit, onAdd, sca
                     placeholder="Preis"
                     value={editedProduct.preis}
                     onChange={(e) => setEditedProduct({ ...editedProduct, preis: parseFloat(e.target.value) || 0 })}
+                  />
+                  <input
+                    type="number"
+                    className="form-control"
+                    placeholder="Menge"
+                    value={editedProduct.menge}
+                    onChange={(e) => setEditedProduct({ ...editedProduct, menge: parseInt(e.target.value) || 0 })}
                   />
                 </div>
               ) : (

@@ -7,19 +7,36 @@ import GescannteProdukteList from '../gescannteproduktelist/GescannteProdukteLis
 
 const Kamera = () => {
   const [scannedData, setScannedData] = useState('');
+  const [gescannteDaten, setGescannteDaten] = useState({
+    produktName: '',
+    preis: 0,
+    menge: 1, // Default value for menge
+  });
+
+  const extractDataFromScannedData = (data) => {
+    try {
+      const parsedData = JSON.parse(data.text);
+      const { produktName, preis } = parsedData;
+      return { produktName, preis, menge: 1 }; // Default value for menge
+    } catch (error) {
+      console.error('Error parsing scanned data:', error);
+      return { produktName: '', preis: 0, menge: 1 }; // Default value for menge
+    }
+  };
 
   const handleScan = (data) => {
     if (data) {
+      const extractedData = extractDataFromScannedData(data);
+      setGescannteDaten(extractedData);
       setScannedData(data);
     }
   };
 
   const handleError = (error) => {
     console.error('QR Code Scanner Error:', error);
-    // Benachrichtigung für den Benutzer über den Fehler
     toast.error('Fehler beim Scannen des QR-Codes. Bitte versuchen Sie es erneut.', {
       position: 'top-center',
-      autoClose: 5000, // Auto-Close nach 5 Sekunden
+      autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -33,16 +50,12 @@ const Kamera = () => {
         Zurück zur Registrierung
       </Link>
       <h1 className="mt-3">QR Code Scanner</h1>
-      <QrScanner
-        delay={300}
-        onError={handleError}
-        onScan={handleScan}
-        style={{ width: '100%' }}
-      />
+      <QrScanner delay={300} onError={handleError} onScan={handleScan} style={{ width: '100%' }} />
       {scannedData && (
         <>
           <p>Gescannter QR Code: {scannedData.text}</p>
-          <GescannteProdukteList gescannteProdukte={[{ id: 1, name: 'Produkt', preis: 10 }]} />
+          <GescannteProdukteList gescannteProdukte={[gescannteDaten]} />
+          <p>Mehr Info: {JSON.stringify(gescannteDaten)}</p>
         </>
       )}
       <Link to="/gescannteproduktelist" className="btn btn-primary mt-3">

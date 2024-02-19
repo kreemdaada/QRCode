@@ -17,8 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
   $produktName = $data['produktName'];
   $preis = $data['preis'];
+  $menge= $data['menge'];
 
-  $sql = "INSERT INTO gescannte_produkte (produktName, preis) VALUES ('$produktName', '$preis')";
+  $sql = "INSERT INTO gescannte_produkte (produktName, preis, menge) VALUES ('$produktName', '$preis','$menge')";
 
   if ($conn->query($sql) === TRUE) {
     echo json_encode(array('success' => true));
