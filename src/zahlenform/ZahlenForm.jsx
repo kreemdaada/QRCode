@@ -22,22 +22,27 @@ const ZahlenForm = () => {
 
     
   const handleZahlen = () => {
-
-    fetch('http://localhost/QR-Code/backend/zahlnform.php', {
+    const data =formData;
+    fetch('http://localhost/QR-Code/backend/zahlenform.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify(formData),
+      body: JSON.stringify(data),
     })
-      .then(response => response.json())
-      .then(data => {
-        console.log(data);
-        navigate('/bezahlen-erfolgreich');
-      })
-      .catch(error => {
-        console.error('Fehler beim Senden der Daten:', error);
-      });
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(data => {
+      console.log('Zahlen process completed after 5 seconds', data);
+      navigate('/bezahlen-erfolgreich');
+    })
+    .catch(error => {
+      console.error('Fetch error:', error);
+    });
 
     setTimeout(() => {
       console.log('Zahlen process completed after 5 seconds', formData);

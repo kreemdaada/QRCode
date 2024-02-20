@@ -1,10 +1,20 @@
 <?php
-header("Access-Control-Allow-Origin: *");
-header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
 
+header('Access-Control-Allow-Origin: *');
+header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
+header('Access-Control-Allow-Headers: Content-Type');
+header('Content-Type: application/json');
 
-include '/database.php';
+$servername = "localhost";
+$username = "root";
+$password = "";
+$dbname = "qrcode";
+
+// Erstelle eine Verbindung zur Datenbank
+$conn = new mysqli($servername, $username, $password, $dbname);
 
 // Überprüfen, ob die Verbindung erfolgreich war
 if ($conn->connect_error) {
