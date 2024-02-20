@@ -35,6 +35,7 @@ const GescannteProdukteList = ({ gescannteProdukte, onDelete, onEdit, onAdd, sca
 
   // Api-Anfrage
   const sendScannedDataToAPI = () => {
+
     fetch('http://localhost/QR-Code/backend/api.php', {
       method: 'POST',
       headers: {

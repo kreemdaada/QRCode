@@ -22,6 +22,7 @@ const ZahlenForm = () => {
 
     
   const handleZahlen = () => {
+
     fetch('http://localhost/QR-Code/backend/zahlnform.php', {
       method: 'POST',
       headers: {
@@ -37,6 +38,12 @@ const ZahlenForm = () => {
       .catch(error => {
         console.error('Fehler beim Senden der Daten:', error);
       });
+
+    setTimeout(() => {
+      console.log('Zahlen process completed after 5 seconds', formData);
+      navigate('/bezahlen-erfolgreich');
+    }, 5000);
+
   };
     
     useEffect(() => {
