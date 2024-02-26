@@ -9,7 +9,7 @@ const BearbeitZahlen = () => {
     // Set a timeout for 8 seconds
     const timeoutId = setTimeout(() => {
       setRedirect(true);
-    }, 8000);
+    }, 4000);
 
     // Cleanup function to clear the timeout
     return () => clearTimeout(timeoutId);
@@ -19,7 +19,7 @@ const BearbeitZahlen = () => {
     // Navigate to /ZahlenForm if redirect is true
     if (redirect) {
       console.log('Cancelled');
-      navigate('/ZahlenForm');
+      navigate('/bezahlen-erfolgreich');
     }
   }, [redirect, navigate]);
 

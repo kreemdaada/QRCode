@@ -38,7 +38,7 @@ const ZahlenForm = () => {
       })
       .then(data => {
         console.log('Zahlen process completed after 5 seconds', data);
-        navigate('/bezahlen-erfolgreich');
+        navigate('/bearbeiten');
       })
       .catch(error => {
         console.error('Fetch error:', error);
