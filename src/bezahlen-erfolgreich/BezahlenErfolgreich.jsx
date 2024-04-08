@@ -19,7 +19,7 @@ const BezahlenErfolgreich = () => {
   };
 
   const sendBestellnummerToServer = (bestellnummer) => {
-    fetch('http://localhost/my-react-app/backend/speichereBestellnummer.php', {
+    fetch('http://localhost/QR-Code/backend/speichereBestellnummer.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

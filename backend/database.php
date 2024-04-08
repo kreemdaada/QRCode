@@ -1,5 +1,4 @@
 <?php
-// Display PHP errors
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -37,9 +36,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         && !empty($jsonBody['email'])
         && !empty($jsonBody['password'])
     ) {
-        $firstName = $jsonBody['firstName'];
-        $lastName = $jsonBody['lastName'];
-        $email = $jsonBody['email'];
+        $firstName = htmlspecialchars($jsonBody['firstName'], ENT_QUOTES, 'UTF-8');
+        $lastName = htmlspecialchars($jsonBody['lastName'], ENT_QUOTES, 'UTF-8');
+        $email = htmlspecialchars($jsonBody['email'], ENT_QUOTES, 'UTF-8');
         $password = $jsonBody['password'];
         $confirmPassword = $jsonBody['confirmPassword'];
 

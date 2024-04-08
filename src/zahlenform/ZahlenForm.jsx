@@ -22,11 +22,34 @@ const ZahlenForm = () => {
 
     
   const handleZahlen = () => {
+    const data = formData;
+    fetch('http://localhost/QR-Code/backend/zahlenform.php', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then(data => {
+        console.log('Zahlen process completed after 5 seconds', data);
+        navigate('/bearbeiten');
+      })
+      .catch(error => {
+        console.error('Fetch error:', error);
+      });
+  
     setTimeout(() => {
       console.log('Zahlen process completed after 5 seconds', formData);
       navigate('/bezahlen-erfolgreich');
     }, 5000);
   };
+  
     
     useEffect(() => {
       console.log('ZahlenForm component has mounted.');

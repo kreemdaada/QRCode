@@ -1,5 +1,4 @@
 <?php
-// Display PHP errors
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -31,30 +30,36 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Überprüfen, ob die Schlüssel im JSON-Body vorhanden sind
     if (isset($jsonBody['bestellnummer']) && !empty($jsonBody['bestellnummer'])) {
-        $bestellnummer = $jsonBody['bestellnummer'];
+        // Filtere und validiere die Daten weiter
+        $bestellnummer = filter_var($jsonBody['bestellnummer'], FILTER_SANITIZE_STRING);
 
         // Verwende ein vorbereitetes Statement, um SQL-Injektionen zu verhindern
         $sql = "INSERT INTO bestellungen (bestellnummer) VALUES (?)";
         $stmt = $conn->prepare($sql);
 
-        // Binden der Parameter
-        $stmt->bind_param("s", $bestellnummer);
-
-        // Ausführen des Statements
-        if ($stmt->execute()) {
-            echo json_encode(['success' => true, 'message' => 'Bestellnummer erfolgreich gespeichert']);
+        // Überprüfen, ob das Statement korrekt vorbereitet wurde
+        if (!$stmt) {
+            echo json_encode(['success' => false, 'error' => 'Fehler beim Vorbereiten des Statements']);
         } else {
-            $errorDetails = $stmt->error;
-            $errorCode = $stmt->errno;
+            // Binden der Parameter
+            $stmt->bind_param("s", $bestellnummer);
 
-            // Fehlerprotokollierung
-            error_log("Error executing query: " . $errorDetails);
+            // Ausführen des Statements
+            if ($stmt->execute()) {
+                echo json_encode(['success' => true, 'message' => 'Bestellnummer erfolgreich gespeichert']);
+            } else {
+                $errorDetails = $stmt->error;
+                $errorCode = $stmt->errno;
 
-            echo json_encode(['success' => false, 'error' => 'Fehler beim Speichern der Bestellnummer', 'errorCode' => $errorCode]);
+                // Fehlerprotokollierung
+                error_log("Error executing query: " . $errorDetails);
+
+                echo json_encode(['success' => false, 'error' => 'Fehler beim Speichern der Bestellnummer', 'errorCode' => $errorCode]);
+            }
+
+            // Statement schließen
+            $stmt->close();
         }
-
-        // Statement schließen
-        $stmt->close();
     } else {
         echo json_encode(['success' => false, 'error' => 'Incomplete or empty data']);
     }

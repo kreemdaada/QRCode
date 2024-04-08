@@ -23,7 +23,7 @@ const RegistrationForm = ({ onRegistration, onLogin }) => {
   };
 
   const handleAuthentication = () => {
-    fetch('http://localhost/Qrcode/backend/database.php', {
+    fetch('http://localhost/QR-Code/backend/database.php', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
